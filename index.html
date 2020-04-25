@@ -38,7 +38,31 @@
 			user or via JS whereas sessionStorage persists so long as the page on the
 			active tab that created the storage data remains active, if the user
 			closes that tab and opens a new tab but with the same web page you will
-			see the localStorage still exists but the sessionStorage doesa not.
+			see the localStorage still exists but the sessionStorage does not.
+		</p>
+		<h3>Cookies</h3>
+		<p>
+			Cookies also allow us to store simple key value pairs however they can
+			also be sent to the server/backend via request headers and can also
+			contain special cofigiruations such as flags for HTTP only meaning only
+			the backend/server has access to it or expiration times etc. These
+			configuration flags are added by defining them after a semi colon
+			seperarting the key value pair e.g. userId=123; max-age=60. Bear in mind
+			any configuration flags we set are not included when we parse cookie data
+			so it will not interfere with grabbing the data with a String.split for
+			example. We access cookie data via 'document.cookie' and add data to
+			cookies by assigning a new value with 'document.cookie = '. This may look
+			strange as normally defining data with '=' would normally overrite
+			existing data however with document.cookie this is not the case and
+			instead just adds new data to the cookie we add the data as a string with
+			the key name followed by an '=' and then the value. Cookies are also only
+			available on a fully served page running on a server be it development or
+			producton. Therefore running a static html page in the browser will not
+			work when it comes to seeing and interacting with cookie data. There are
+			no methods to get, set and remove cookie data instead cookie data is all
+			held togeteher in a string with the key value pairs semi colon seperated
+			so one technique would be to use the string split method to split the
+			string at each semicolon to get the key value pairs in array format.
 		</p>
 	</body>
 </html>

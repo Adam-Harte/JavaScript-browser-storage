@@ -38,3 +38,17 @@ sessionStorage.removeItem('userId');
 console.log(sessionStorage.length);
 sessionStorage.clear();
 console.log(sessionStorage.length);
+
+// cookies
+console.log(document.cookie);
+document.cookie = 'userID=123';
+document.cookie = 'name=Neil';
+document.cookie = 'authorized=true; max-age=60';
+
+console.log(document.cookie);
+
+console.log(document.cookie.split(';'));
+
+setTimeout(() => {
+	console.log(document.cookie);
+}, 70000);
