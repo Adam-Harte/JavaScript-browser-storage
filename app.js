@@ -55,9 +55,14 @@ setTimeout(() => {
 
 // indexedDB
 const dbRequest = indexedDB.open('StorageDummy', 1);
+let db;
+
+dbRequest.onsuccess = function (event) {
+	db = event.target.result;
+};
 
 dbRequest.onupgradeneeded = function (event) {
-	const db = event.target.result;
+	db = event.target.result;
 
 	const objStore = db.createObjectStore('products', { keyPath: 'id' });
 
@@ -76,4 +81,19 @@ dbRequest.onupgradeneeded = function (event) {
 
 dbRequest.onerror = function (event) {
 	console.log('Error!');
+};
+
+const productsStore = db
+	.transaction('products', 'readwrite')
+	.objectStore('products');
+productsStore.add({
+	id: 'p2',
+	price: 150,
+	quantity: 2,
+	title: 'Second product',
+});
+
+const product2 = productsStore.get('p2');
+product2.onsuccess = function () {
+	console.log(product2.result);
 };
