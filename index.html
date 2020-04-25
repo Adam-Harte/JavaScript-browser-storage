@@ -9,12 +9,36 @@
 		<h1>JavaScript Browser Storage</h1>
 		<h3>Browser Storage and Storage Options</h3>
 		<p>
-			Browser storage allows us to store temporary data on a users machien in
-			the browser. Common exmaples of browser storage would be storing temprary
+			Browser storage allows us to store temporary data on a users machine in
+			the browser. Common exmaples of browser storage would be storing temporary
 			conveniecne data for a user such as preferred settings, current shopping
 			cart etc. Another exmaple wouild be for authentication storing a JWT. We
 			have four options for browser storage and they are localStorage,
 			sessionStorage, cookies and indexedDB.
+		</p>
+		<h3>localStorage and sessionStorage</h3>
+		<p>
+			localStorage and sessionStorage work with simple key value pairs and can
+			be useful to manage user preferences and basic user data. The localStorage
+			and sessionStorage can be cleared by the user and via JavaScript. Not
+			ideal for complex data. localStorage and sessionStorage cannot be read by
+			the backend/server as they cannot be attached to a request in the headers.
+			To use localStorage we use the 'keyword' localStorage which is part of the
+			window object and gives us access to all the properties and methods of
+			localStorage. We have methods to set and remove items, to clear
+			localStorage and also to access data in localStorage. localStorage takes
+			all data you store in it as a string and therfore if you pass something
+			that isnt a string it will call the toString method on it. Therefore in
+			the case of storing object data in localStorage it is best to JSON
+			stringify it as toString will not work correctly. You have the same
+			properties and methods available in sessionStorage so accessing, setting
+			and removing the data is the same in both localStorage and sessionStorage.
+			The difference between localStorage and sessionStorage is localStorage
+			persists on the users machine until it is either manually removed by the
+			user or via JS whereas sessionStorage persists so long as the page on the
+			active tab that created the storage data remains active, if the user
+			closes that tab and opens a new tab but with the same web page you will
+			see the localStorage still exists but the sessionStorage doesa not.
 		</p>
 	</body>
 </html>
