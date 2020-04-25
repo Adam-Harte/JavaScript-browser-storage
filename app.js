@@ -52,3 +52,28 @@ console.log(document.cookie.split(';'));
 setTimeout(() => {
 	console.log(document.cookie);
 }, 70000);
+
+// indexedDB
+const dbRequest = indexedDB.open('StorageDummy', 1);
+
+dbRequest.onupgradeneeded = function (event) {
+	const db = event.target.result;
+
+	const objStore = db.createObjectStore('products', { keyPath: 'id' });
+
+	objStore.transaction.oncomplete = function (event) {
+		const productsStore = db
+			.transaction('products', 'readwrite')
+			.objectStore('products');
+		productsStore.add({
+			id: 'p1',
+			price: 200,
+			quantity: 3,
+			title: 'First product',
+		});
+	};
+};
+
+dbRequest.onerror = function (event) {
+	console.log('Error!');
+};

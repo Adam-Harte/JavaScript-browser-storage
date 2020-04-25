@@ -64,5 +64,25 @@
 			so one technique would be to use the string split method to split the
 			string at each semicolon to get the key value pairs in array format.
 		</p>
+		<h3>indexedDB</h3>
+		<p>
+			indexedDB is more complex acting as an in browser database for storing
+			data. We can store more complex data with objects in an organised way
+			similar to traditional database tables called objectStore. To use
+			indexedDb we first have to open a connection to the in browser database
+			which we do with the indexedDB open method. Once that connection has been
+			established we can set the onupgradeneeded property to a function which
+			allows us to create data upon the database creation/connection. Inside
+			this onupgradeneeded function we grab our created/connected database with
+			event.target.result. Then we can create a table like data storage called
+			objectStore with the createObjectStore method. This method takes an
+			argument for the name of the new objectStore as well as a configuration
+			object for the keyPath. We can then add data to this objectStore on the
+			transaction obejcts oncomplete method where we grab the created
+			objectStore via the database transaction and then call the add method. The
+			add method takes an object as an argument for all the data you want to add
+			and this object must at least contain the keyPath you defined in the
+			objectStore as part of the data being added.
+		</p>
 	</body>
 </html>
